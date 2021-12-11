@@ -3,9 +3,11 @@ import 'package:flutter_race_01_ta_caro/shared/services/app_database.dart';
 
 class CreateRepositoryImpl implements ICreateRepository {
   final AppDatabase database;
+  final String userId;
 
   CreateRepositoryImpl({
     required this.database,
+    required this.userId,
   });
 
   @override
@@ -20,6 +22,7 @@ class CreateRepositoryImpl implements ICreateRepository {
       "name": name,
       "price": priceSanitize,
       "created": dateFormatted,
+      "user": userId,
     });
     return response;
   }

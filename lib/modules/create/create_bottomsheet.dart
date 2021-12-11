@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+
 import 'package:flutter_race_01_ta_caro/modules/create/repositories/create_repository_impl.dart';
+import 'package:flutter_race_01_ta_caro/shared/models/user_model.dart';
 import 'package:flutter_race_01_ta_caro/shared/services/app_database.dart';
 import 'package:flutter_race_01_ta_caro/shared/theme/app_theme.dart';
 import 'package:flutter_race_01_ta_caro/shared/widgets/button/button.dart';
@@ -9,7 +11,11 @@ import 'package:flutter_race_01_ta_caro/shared/widgets/input_text/input_text.dar
 import 'create_controller.dart';
 
 class CreateBottomsheet extends StatefulWidget {
-  const CreateBottomsheet({Key? key}) : super(key: key);
+  final UserModel user;
+  const CreateBottomsheet({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   State<CreateBottomsheet> createState() => _CreateBottomsheetState();
@@ -21,7 +27,11 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
   @override
   void initState() {
     controller = CreateController(
-        repository: CreateRepositoryImpl(database: AppDatabase.instance));
+      repository: CreateRepositoryImpl(
+        database: AppDatabase.instance,
+        userId: widget.user.id,
+      ),
+    );
     controller.addListener(() {
       controller.state.when(
         success: (_) => Navigator.pop(context),

@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     if (index == 3) {
       await showModalBottomSheet(
         context: context,
-        builder: (context) => CreateBottomsheet(),
+        builder: (context) => CreateBottomsheet(user: widget.user),
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
