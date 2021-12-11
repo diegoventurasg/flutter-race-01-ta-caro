@@ -85,7 +85,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
             ),
             InputText(
               label: "Data da compra",
-              hint: "Digite dd/mm/aa",
+              hint: "Digite dd/mm/aaaa",
               onChanged: (value) => controller.onChange(date: value),
               keyboardType: TextInputType.datetime,
               inputFormatters: [MaskedInputFormatter('00/00/0000')],
