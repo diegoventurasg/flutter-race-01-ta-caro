@@ -91,6 +91,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               InputText(
                 label: "E-mail",
                 hint: "Digite seu e-mail",
+                keyboardType: TextInputType.emailAddress,
                 validator: (value) =>
                     isEmail(value) ? null : "Digite um e-mail válido",
                 onChanged: (value) => controller.onChange(email: value),
