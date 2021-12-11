@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "flutter_race_01_ta_caro",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define",
+                "SUPABASEURL=",
+                "--dart-define",
+                "SUPABASEKEY="
+            ]
+        },
+        {
+            "name": "flutter_race_01_ta_caro (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}
