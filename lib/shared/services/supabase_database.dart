@@ -83,10 +83,12 @@ class SupabaseDatabase implements AppDatabase {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getAll(String table) async {
+  Future<List<Map<String, dynamic>>> getOrdersByUserId(String userId) async {
+    print(userId);
     final response = await client
-        .from(table)
+        .from("orders")
         .select("*")
+        .eq("user", userId)
         .order("created")
         .order("created_at")
         .execute();

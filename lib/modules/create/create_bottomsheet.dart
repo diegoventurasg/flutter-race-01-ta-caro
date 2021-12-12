@@ -27,10 +27,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
   @override
   void initState() {
     controller = CreateController(
-      repository: CreateRepositoryImpl(
-        database: AppDatabase.instance,
-        userId: widget.user.id,
-      ),
+      repository: CreateRepositoryImpl(database: AppDatabase.instance),
     );
     controller.addListener(() {
       controller.state.when(
@@ -115,7 +112,7 @@ class _CreateBottomsheetState extends State<CreateBottomsheet> {
                 error: (message, _) => Text(message),
                 orElse: () => Button(
                   label: "Adicionar",
-                  onTap: () => controller.create(),
+                  onTap: () => controller.create(userId: widget.user.id),
                 ),
               ),
             ),

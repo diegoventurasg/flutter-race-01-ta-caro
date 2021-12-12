@@ -39,7 +39,7 @@ class CreateController extends ChangeNotifier {
     return false;
   }
 
-  Future<void> create() async {
+  Future<void> create({required String userId}) async {
     if (validate()) {
       try {
         update(AppState.loading());
@@ -47,6 +47,7 @@ class CreateController extends ChangeNotifier {
           name: _name,
           date: _date,
           price: _price,
+          userId: userId,
         );
         if (response) {
           update(AppState.success<bool>(response));

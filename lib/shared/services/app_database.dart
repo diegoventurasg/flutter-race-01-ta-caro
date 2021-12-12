@@ -3,8 +3,8 @@ import 'package:flutter_race_01_ta_caro/shared/services/supabase_database.dart';
 
 abstract class AppDatabase {
   static final AppDatabase instance = SupabaseDatabase();
-  void init() {}
-  Future<List<Map<String, dynamic>>> getAll(String table);
+  void init();
+  Future<List<Map<String, dynamic>>> getOrdersByUserId(String userId);
   Future<bool> create({
     required String table,
     required Map<String, dynamic> data,

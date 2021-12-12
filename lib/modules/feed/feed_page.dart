@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_race_01_ta_caro/modules/feed/feed_controller.dart';
 import 'package:flutter_race_01_ta_caro/modules/feed/repositories/feed_repository_impl.dart';
 import 'package:flutter_race_01_ta_caro/shared/models/order_model.dart';
+import 'package:flutter_race_01_ta_caro/shared/models/user_model.dart';
 import 'package:flutter_race_01_ta_caro/shared/services/app_database.dart';
 import 'package:flutter_race_01_ta_caro/shared/theme/app_text.dart';
 import 'package:flutter_race_01_ta_caro/shared/widgets/card_chart/card_chart.dart';
@@ -9,7 +11,11 @@ import 'package:flutter_race_01_ta_caro/shared/widgets/card_product/card_product
 import 'package:flutter_race_01_ta_caro/shared/widgets/list_tile/app_list_tile.dart';
 
 class FeedPage extends StatefulWidget {
-  const FeedPage({Key? key}) : super(key: key);
+  final UserModel user;
+  const FeedPage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   State<FeedPage> createState() => _FeedPageState();
@@ -22,7 +28,7 @@ class _FeedPageState extends State<FeedPage> {
   void initState() {
     controller = FeedController(
         repository: FeedRepositoryImpl(database: AppDatabase.instance));
-    controller.getData();
+    controller.getData(userId: widget.user.id);
     super.initState();
   }
 

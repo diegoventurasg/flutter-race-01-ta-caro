@@ -63,10 +63,10 @@ class FeedController extends ChangeNotifier {
     }
   }
 
-  Future<void> getData() async {
+  Future<void> getData({required String userId}) async {
     try {
       update(AppState.loading());
-      final response = await repository.getAll();
+      final response = await repository.getOrdersByUserId(userId);
       update(AppState.success<List<OrderModel>>(response));
     } catch (e) {
       update(

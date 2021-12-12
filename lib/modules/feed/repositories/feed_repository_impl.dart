@@ -9,8 +9,8 @@ class FeedRepositoryImpl implements IFeedRepository {
   });
 
   @override
-  Future<List<OrderModel>> getAll() async {
-    final response = await database.getAll("orders");
+  Future<List<OrderModel>> getOrdersByUserId(String userId) async {
+    final response = await database.getOrdersByUserId(userId);
     return response.map((e) => OrderModel.fromMap(e)).toList();
   }
 }

@@ -3,5 +3,6 @@ abstract class ICreateRepository {
     required String name,
     required String price,
     required String date,
+    required String userId,
   });
 }

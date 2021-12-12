@@ -3,11 +3,9 @@ import 'package:flutter_race_01_ta_caro/shared/services/app_database.dart';
 
 class CreateRepositoryImpl implements ICreateRepository {
   final AppDatabase database;
-  final String userId;
 
   CreateRepositoryImpl({
     required this.database,
-    required this.userId,
   });
 
   @override
@@ -15,6 +13,7 @@ class CreateRepositoryImpl implements ICreateRepository {
     required String name,
     required String price,
     required String date,
+    required String userId,
   }) async {
     final priceSanitize = double.parse(price.replaceAll("R\$", ""));
     final dateFormatted = date.split("/").reversed.join("-");

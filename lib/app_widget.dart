@@ -23,13 +23,17 @@ class AppWidget extends StatelessWidget {
           "/splash": (context) => const SplashPage(),
           "/login": (context) => const LoginPage(),
           "/login/create-account": (context) => const CreateAccountPage(),
-          "/home": (context) => HomePage(
-                pages: [
-                  FeedPage(),
-                  ProfilePage(),
-                ],
-                user: ModalRoute.of(context)!.settings.arguments as UserModel,
-              ),
+          "/home": (context) {
+            final user =
+                ModalRoute.of(context)!.settings.arguments as UserModel;
+            return HomePage(
+              pages: [
+                FeedPage(user: user),
+                ProfilePage(),
+              ],
+              user: user,
+            );
+          },
         });
   }
 }
